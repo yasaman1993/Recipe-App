@@ -41,7 +41,7 @@ export default function RandomMeal() {
       </button>
       {randomMeal && (
         <div className="meal-details">
-          <h3>{randomMeal.strMeal}</h3>
+          <h2>{randomMeal.strMeal}</h2>
           <img
             src={randomMeal.strMealThumb}
             alt={randomMeal.strMeal}

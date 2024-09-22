@@ -6,6 +6,7 @@ import CategoryPage from "./components/CategoryPage";
 
 
 import "../src/App.css";
+import RecipeDetails from "./components/RecipeDetails";
 
 export default function App() {
   return (
@@ -15,7 +16,7 @@ export default function App() {
           <Route index element={<HomePage />} />
 
           <Route path="/category/:category" element={<CategoryPage />} />
-
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
          
         </Route>
       </Routes>

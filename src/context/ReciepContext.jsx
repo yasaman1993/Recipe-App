@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from "react";
 
 const initialState = {
   recipes: [],
-  
+  recipeDetails: {},
   categories: [],
   categoryMeals: [],
   randomRecipe: {},
@@ -12,7 +12,8 @@ const recipeReducer = (state, action) => {
   switch (action.type) {
     case "Recipes":
       return { ...state, recipes: action.payload };
-    
+      case "RecipeDetails": 
+      return { ...state, recipeDetails: action.payload };
     case "Categories":
       return { ...state, categories: action.payload };
     case "CategoryMeal":
