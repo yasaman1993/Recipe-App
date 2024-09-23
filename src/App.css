@@ -1,8 +1,20 @@
 body {
-  margin: 0;
   font-family: "Arial", sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+ margin: 0;
+
+}
+
+.light-mode {
+  background-color: white;
+  color: black;
+}
+
+.dark-mode {
+  background-color: rgb(52, 58, 64);
+  color: white; 
 }
 
 h1,
@@ -16,7 +28,7 @@ h5 {
 
 a {
   text-decoration: none;
-  color: inherit;
+  
 }
 
 a:hover {
@@ -32,3 +44,5 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+

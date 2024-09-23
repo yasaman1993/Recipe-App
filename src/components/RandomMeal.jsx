@@ -1,5 +1,6 @@
 import { RecipeContext } from "../context/ReciepContext";
 import { useContext, useEffect, useState } from "react";
+
 import "../style /RandomMeal.css";
 
 export default function RandomMeal() {
@@ -35,7 +36,8 @@ export default function RandomMeal() {
   }
 
   return (
-    <div className="random-meal-container">
+    <div className={`random-meal-container ${state.isDarkMode ? "dark-mode" : ""}`}>
+     
       <button className="lucky-button" onClick={handleClick}>
         <h2>Lucky Recipe!</h2>
       </button>

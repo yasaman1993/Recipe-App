@@ -1,3 +1,4 @@
+
 .random-meal-container {
   padding: 20px;
   border-radius: 10px;
@@ -25,6 +26,7 @@
 }
 
 .meal-image {
+  height: 70%;
   width: 100%;
   height: auto;
   border-radius: 10px;
@@ -57,4 +59,31 @@ p {
   text-align: justify;
 }
 
+/*dark-mode*/
+.dark-mode .random-meal-container {
+  background-color: rgb(52, 58, 64);
+  color: #fff; 
+}
+
+.dark-mode .lucky-button {
+  background-color: #ff6f61; 
+}
+
+.dark-mode .lucky-button:hover {
+  background-color: #e55d53; 
+}
+
+.dark-mode .ingredients-list li {
+  background-color: #2c2b2b; 
+  color: #ccc; 
+}
+
+.dark-mode h3,
+.dark-mode h4 {
+  color: #fff;
+}
+
+.dark-mode p {
+  color: #ddd; 
+}
   

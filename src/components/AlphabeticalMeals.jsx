@@ -5,10 +5,10 @@ import { RecipeContext } from "../context/ReciepContext";
 export default function AlphabeticalMeals() {
   const { state, dispatch } = useContext(RecipeContext);
   const [letter, setLetter] = useState("");
-  const [noData, setNoData] = useState(false); // حالت برای وقتی که داده‌ای یافت نشود
+  const [noData, setNoData] = useState(false); 
 
   useEffect(() => {
-    // اگر حرفی وارد نشده بود، هیچ کاری انجام نده
+    // If no word was entered, do nothing
     if (!letter) return;
 
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`)
@@ -19,7 +19,7 @@ export default function AlphabeticalMeals() {
         return response.json();
       })
       .then((data) => {
-        // بررسی اینکه آیا داده‌ای برگردانده شده است یا نه
+        // Check if any data has been returned
         if (data.meals) {
           dispatch({ type: "Recipes", payload: data.meals });
           setNoData(false);
@@ -33,7 +33,7 @@ export default function AlphabeticalMeals() {
 
   return (
     <div
-      style={{
+       style={{
         maxWidth: "600px",
         margin: "0 auto",
         padding: "20px",
@@ -73,17 +73,16 @@ export default function AlphabeticalMeals() {
                   key={recipe.idMeal}
                   style={{
                     textDecoration: "none",
-
                     display: "block",
                     padding: "10px",
                     borderBottom: "1px solid #eee",
                     transition: "background-color 0.3s ease",
                   }}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor = "#f0f0f0")
+                    (e.currentTarget.style.backgroundColor = "#a8a8a8")
                   }
                   onMouseLeave={(e) =>
-                    (e.currentTarget.style.backgroundColor = "white")
+                    (e.currentTarget.style.backgroundColor = "#ff6347)")
                   }>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <img

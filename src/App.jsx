@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { RecipeProvider } from "./context/ReciepContext";
-import Layout from "./components/Layout";
-import HomePage from "./components/HomePage";
-import CategoryPage from "./components/CategoryPage";
-
-
+import Layout from "./pages/Layout";
+import HomePage from "./pages/HomePage";
+import CategoryPage from "./pages/CategoryPage";
+import RecipeDetails from "./pages/RecipeDetails";
+import SearchMeal from "./pages/SearchMeal";
 import "../src/App.css";
-import RecipeDetails from "./components/RecipeDetails";
+import Favorites from "./components/Favorites";
 
 export default function App() {
   return (
@@ -14,12 +14,13 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-
           <Route path="/category/:category" element={<CategoryPage />} />
-          <Route path="/recipe/:id" element={<RecipeDetails />} />
-         
+          <Route path="/recipe/:idMeal" element={<RecipeDetails />} />
+          <Route path="/search/:searchTerm" element={<SearchMeal />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Route>
       </Routes>
     </RecipeProvider>
   );
 }
+

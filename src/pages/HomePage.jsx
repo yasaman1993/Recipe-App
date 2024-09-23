@@ -1,27 +1,22 @@
-import AlphabeticalMeals from "./AlphabeticalMeals";
-import RandomMeal from "./RandomMeal";
-import Category from "./Categories";
+import AlphabeticalMeals from "../components/AlphabeticalMeals";
+import RandomMeal from "../components/RandomMeal";
+import Category from "../components/Categories";
+import Header from "../components/Header";
+import { RecipeContext } from "../context/ReciepContext";
+import { useContext } from "react";
 
 export default function HomePage() {
+const {state} = useContext(RecipeContext);
+
   const containerStyle = {
     maxWidth: '1200px',
     margin: 'auto',
     padding: '20px',
-    backgroundColor: '#f8f9fa',
+    backgroundColor: state.isDarkMode ? '#343a40' : '#f8f9fa',
     fontFamily: 'Arial, sans-serif',
   };
 
-  const headerStyle = {
-    textAlign: 'center',
-    marginBottom: '40px',
-    color: '#333',
-  };
 
-  const titleStyle = {
-    fontSize: '3em',
-    color: '#ff6f61',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)',
-  };
 
   const contentStyle = {
     display: 'flex',
@@ -30,7 +25,7 @@ export default function HomePage() {
   };
 
   const sectionStyle = {
-    backgroundColor: '#fff',
+    backgroundColor: state.isDarkMode ? '#495057' : '#fff', 
     padding: '20px',
     borderRadius: '10px',
     boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
@@ -40,9 +35,7 @@ export default function HomePage() {
 
   return (
     <div style={containerStyle}>
-      <header style={headerStyle}>
-        <h1 style={titleStyle}>YummyPots</h1>
-      </header>
+      <Header />
       <section style={contentStyle}>
         <div style={sectionStyle}>
           <AlphabeticalMeals />

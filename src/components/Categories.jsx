@@ -16,10 +16,10 @@ export default function Category() {
   }, [dispatch]);
 
   return (
-    <section className="category-container">
-      <h2>Categories</h2>
+    <section className={`category-container ${state.isDarkMode ? "dark-mode" : ""}`}>
+      <h2 className="title">Categories</h2>
       <ul className="category-list">
-        {state.categories?.map((category) => (
+        {state.categories.map((category) => (
           <li key={category.idCategory} className="category-item">
             <Link to={`/category/${category.strCategory}`}>
               <h4>{category.strCategory}</h4>
@@ -31,4 +31,3 @@ export default function Category() {
     </section>
   );
 }
-
