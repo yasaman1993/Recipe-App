@@ -4,18 +4,17 @@ import { useContext, useEffect, useState } from "react";
 import "../style /RandomMeal.css";
 
 export default function RandomMeal() {
-  const { state, dispatch } = useContext(RecipeContext);
+  const { state } = useContext(RecipeContext);
   const [randomMeal, setRandomMeal] = useState(null);
 
-  const fetchRandomMeal = () => {
+  function fetchRandomMeal() {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
       .then((data) => {
-        dispatch({ type: "RandomRecipe", payload: data.meals[0] });
         setRandomMeal(data.meals[0]);
       })
       .catch((error) => console.error("Error fetching recipes:", error));
-  };
+  }
 
   useEffect(() => {
     if (!randomMeal) return;
@@ -36,8 +35,10 @@ export default function RandomMeal() {
   }
 
   return (
-    <div className={`random-meal-container ${state.isDarkMode ? "dark-mode" : ""}`}>
-     
+    <div
+      className={`random-meal-container ${
+        state.isDarkMode ? "dark-mode" : ""
+      }`}>
       <button className="lucky-button" onClick={handleClick}>
         <h2>Lucky Recipe!</h2>
       </button>

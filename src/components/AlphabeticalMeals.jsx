@@ -29,7 +29,7 @@ export default function AlphabeticalMeals() {
         }
       })
       .catch((error) => console.error("Error fetching recieps:", error));
-  }, [letter, dispatch]);
+  }, [letter]);
 
   return (
     <div

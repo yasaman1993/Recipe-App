@@ -1,38 +1,33 @@
-import { useContext, useEffect } from "react";
-import { RecipeContext } from "../context/ReciepContext";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Header from "../components/Header";
-import "../style /category.css";
+import "../style /meals.css";
 
 export default function CategoryPage() {
-  const { state, dispatch } = useContext(RecipeContext);
   const { category } = useParams();
+  const [categoryMeals, setCategoryMeals] = useState([]);
 
   useEffect(() => {
-    fetchCategoryByMeal(category);
-  }, [category]);
-
-  const fetchCategoryByMeal = (category) => {
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.meals) {
-          dispatch({ type: "CategoryMeal", payload: data.meals });
+          setCategoryMeals(data.meals);
         } else {
-          dispatch({ type: "CategoryMeal", payload: [] });
+          setCategoryMeals([]);
         }
       })
       .catch((error) => console.error("Error fetching meals:", error));
-  };
+  }, [category]);
 
   return (
     <section className="category-page">
       <Header />
       <h2 className="category-title">{category} Meals</h2>
-      {state.categoryMeals && state.categoryMeals.length > 0 ? (
+      {categoryMeals ? (
         <section className="meals-section">
           <ul className="meals-list">
-            {state.categoryMeals.map((meal) => (
+            {categoryMeals.map((meal) => (
               <li key={meal.idMeal} className="meal-item">
                 <Link to={`/recipe/${meal.idMeal}`}>
                   <img

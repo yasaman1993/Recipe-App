@@ -1,29 +1,50 @@
-import { useContext, useEffect } from "react";
-import { RecipeContext } from "../context/ReciepContext";
+import {  useContext, useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import "../style /category.css";
+import { RecipeContext } from "../context/ReciepContext";
 
 export default function Category() {
-  const { state, dispatch } = useContext(RecipeContext);
+const {state} = useContext(RecipeContext)
+ const [categories , setCategories] = useState([])
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
       .then((response) => response.json())
       .then((data) => {
-        dispatch({ type: "Categories", payload: data.categories });
+        setCategories(data.categories)
+        window.tns({
+          container: ".category-list",
+          items: 5,
+          slideBy: 1,
+          autoplay:true,
+          autoplayTimeout: 2000,
+          nav: false, // die punkte
+          controls: false, // die buttons
+          autoplayButtonOutput: false,
+        });
       })
       .catch((error) => console.error("Error fetching categories:", error));
-  }, [dispatch]);
+  }, []);
+
+ 
 
   return (
-    <section className={`category-container ${state.isDarkMode ? "dark-mode" : ""}`}>
+    <section
+      className={`category-container ${
+        state.isDarkMode ? "dark-mode" : ""
+      }`}>
       <h2 className="title">Categories</h2>
       <ul className="category-list">
-        {state.categories.map((category) => (
+        {categories.map((category) => (
           <li key={category.idCategory} className="category-item">
             <Link to={`/category/${category.strCategory}`}>
               <h4>{category.strCategory}</h4>
-              <img src={category.strCategoryThumb} alt={category.strCategory} className="category-image" />
+              <img
+                src={category.strCategoryThumb}
+                alt={category.strCategory}
+                className="category-image"
+              />
             </Link>
           </li>
         ))}

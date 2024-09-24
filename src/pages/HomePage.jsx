@@ -14,6 +14,7 @@ const {state} = useContext(RecipeContext);
     padding: '20px',
     backgroundColor: state.isDarkMode ? '#343a40' : '#f8f9fa',
     fontFamily: 'Arial, sans-serif',
+    height: "100%"
   };
 
 

@@ -1,51 +1,37 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { RecipeContext } from "../context/ReciepContext";
 import Header from "../components/Header";
 
 export default function SearchMeal() {
   const { searchTerm } = useParams();
-  const { state, dispatch } = useContext(RecipeContext);
+  const [searchMeal, setSearchMeal] = useState("");
 
   useEffect(() => {
-    const fetchMeals = async () => {
-      try {
-        const response = await fetch(
-          `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
-        );
-        const data = await response.json();
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
+      .then((response) => response.json())
+      .then((data) => {
         if (data.meals) {
-          dispatch({ type: "SearchMeal", payload: data.meals });
+          setSearchMeal(data.meals);
         } else {
-          dispatch({ type: "SearchMeal", payload: [] });
+          setSearchMeal("");
         }
-      } catch (error) {
-        console.error("Error fetching meals:", error);
-      }
-    };
-
-    fetchMeals();
-  }, [searchTerm, dispatch]);
+      })
+      .catch((error) => console.error("Error fetching meals:", error));
+  }, [searchTerm]);
 
   const sectionStyle = {
-    height : "100vh",
+    height: "100vh",
     padding: "20px",
     textAlign: "center",
-    backgroundColor: state.isDarkMode ? "#404244" : "#f8f9fa",
     borderRadius: "8px",
-    boxShadow: state.isDarkMode
-      ? "0 1px 5px rgba(255, 255, 255, 0.1)"
-      : "0 1px 5px rgba(0, 0, 0, 0.1)",
-    
   };
-  
+
   const titleStyle = {
     marginBottom: "20px",
-    color: state.isDarkMode ? "#f1f1f1" : "#495057",
     fontSize: "24px",
     fontWeight: "bold",
   };
-  
+
   const listStyle = {
     listStyleType: "none",
     padding: "0",
@@ -53,45 +39,38 @@ export default function SearchMeal() {
     flexWrap: "wrap",
     justifyContent: "center",
   };
-  
+
   const itemStyle = {
     margin: "10px",
-    backgroundColor: state.isDarkMode ? "#404244" : "#f8f9fa",
     borderRadius: "8px",
     overflow: "hidden",
-    boxShadow: state.isDarkMode
-      ? "0 1px 5px rgba(255, 255, 255, 0.1)"
-      : "0 1px 5px rgba(0, 0, 0, 0.1)",
-    transition: "transform 0.2s",
+
     width: "200px",
   };
-  
+
   const itemHoverStyle = {
     transform: "scale(1.05)",
   };
-  
+
   const imageStyle = {
     width: "100%",
     height: "120px",
     objectFit: "cover",
   };
-  
+
   const mealTitleStyle = {
     padding: "10px",
     textAlign: "center",
     fontWeight: "bold",
-    color: state.isDarkMode ? "#f1f1f1" : "#495057",
   };
-
-
 
   return (
     <section style={sectionStyle}>
       <Header />
       <h2 style={titleStyle}>Search Results for: {searchTerm}</h2>
-      {state.searchMeal.length > 0 ? (
+      {searchMeal.length > 0 ? (
         <ul style={listStyle}>
-          {state.searchMeal.map((meal) => (
+          {searchMeal.map((meal) => (
             <li
               key={meal.idMeal}
               style={itemStyle}
@@ -119,8 +98,4 @@ export default function SearchMeal() {
       )}
     </section>
   );
-
-  
 }
-
-

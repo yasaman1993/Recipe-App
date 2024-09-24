@@ -6,7 +6,6 @@ import CategoryPage from "./pages/CategoryPage";
 import RecipeDetails from "./pages/RecipeDetails";
 import SearchMeal from "./pages/SearchMeal";
 import "../src/App.css";
-import Favorites from "./components/Favorites";
 
 export default function App() {
   return (
@@ -17,10 +16,8 @@ export default function App() {
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/recipe/:idMeal" element={<RecipeDetails />} />
           <Route path="/search/:searchTerm" element={<SearchMeal />} />
-          <Route path="/favorites" element={<Favorites />} />
         </Route>
       </Routes>
     </RecipeProvider>
   );
 }
-

@@ -1,17 +1,15 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RecipeContext } from "../context/ReciepContext";
 
 export default function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
-  const {state} = useContext(RecipeContext);
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchTerm) {
-      navigate(`/search/${searchTerm}`); 
-      setSearchTerm(""); // Clear input field
+      navigate(`/search/${searchTerm}`);
+      setSearchTerm(""); 
     }
   };
 
@@ -19,7 +17,6 @@ export default function SearchBar() {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    
   };
 
   const formStyle = {
@@ -29,6 +26,7 @@ export default function SearchBar() {
     maxWidth: "600px",
     borderRadius: "30px",
     overflow: "hidden",
+    
   };
 
   const inputStyle = {
@@ -38,8 +36,7 @@ export default function SearchBar() {
     fontSize: "16px",
     borderRadius: "30px 0 0 30px",
     outline: "none",
-    backgroundColor: state.isDarkMode ? '#404244' : '#f8f9fa',
-    color:state.isDarkMode ? "#fff" : "#000", 
+    
   };
 
   const buttonStyle = {

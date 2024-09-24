@@ -3,8 +3,13 @@ body {
   background-color: white;
   color: black;
   transition: background-color 0.3s, color 0.3s;
- margin: 0;
+  margin: 0;
+  height: 100%;
+}
 
+main {
+  min-height: 100vh;
+ 
 }
 
 .light-mode {
@@ -14,7 +19,7 @@ body {
 
 .dark-mode {
   background-color: rgb(52, 58, 64);
-  color: white; 
+  color: white;
 }
 
 h1,
@@ -28,7 +33,6 @@ h5 {
 
 a {
   text-decoration: none;
-  
 }
 
 a:hover {

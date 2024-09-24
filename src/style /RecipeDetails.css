@@ -73,39 +73,37 @@ h4 {
   color: #555;
 }
 
-/* Dark mode styles */
 .dark-mode .recipe-details-container {
   background-color: rgb(52, 58, 64);
-  color: #fff; 
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); 
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .recipe-title {
-  color: #ffccbc; 
+  color: #ffccbc;
 }
 
 .dark-mode .recipe-meta {
-  background-color: #455a64; 
+  background-color: #455a64;
 }
 
 .dark-mode .recipe-content {
-  background-color: #3c3c3c; 
-  color: #eee; 
+  background-color: #3c3c3c;
+  color: #eee;
 }
 
 .dark-mode .ingredients-list .ingredient-item {
-  background: #546e7a; 
+  background: #546e7a;
 }
 
 .dark-mode .ingredient-item:hover {
-  background: #78909c; 
+  background: #78909c;
 }
 
 .dark-mode .recipe-instructions {
-  background-color: #546e7a; 
+  background-color: #546e7a;
 }
 
 .dark-mode h4 {
-  color: #ffab91; 
+  color: #ffab91;
 }
-
