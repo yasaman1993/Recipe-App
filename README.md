@@ -11,3 +11,6 @@ Recipes SPA is a super easy-to-use web app that helps you find delicious recipes
 .Random Recipe: Feeling adventurous? Click the "Lucky Recipe!" button to discover a random recipe.
 .Dark Mode: Switch between light and dark themes for a better user experience.
 
+# Link to the Recipe-App 
+You can access the live version of the app here:
+ (https://recipe-app-5zt8.onrender.com)
