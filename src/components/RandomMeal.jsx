@@ -18,7 +18,7 @@ export default function RandomMeal() {
 
   useEffect(() => {
     if (!randomMeal) return;
-    fetchRandomMeal(); // بارگذاری اولیه
+    fetchRandomMeal(); 
   }, []);
 
   const handleClick = () => {
